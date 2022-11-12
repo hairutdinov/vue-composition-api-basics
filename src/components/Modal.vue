@@ -4,12 +4,14 @@
     <div class="modal">
       <h2>{{ title }}</h2>
       <slot></slot>
-      <button @click="false">Hide modal</button>
+      <button @click="hideModal">Hide modal</button>
     </div>
   </teleport>
 </template>
 
 <script setup>
+import {defineEmits} from "vue";
+
 const props = defineProps({
   title: {
     type: String,
@@ -18,6 +20,12 @@ const props = defineProps({
 });
 
 console.log(props.title)
+
+const emit = defineEmits(['hideModal'])
+
+const hideModal = () => {
+  emit('hideModal')
+}
 </script>
 
 <style scoped>

@@ -6,6 +6,7 @@
     <Modal
         v-if="isShown"
         title="This is a title (from prop)"
+        @hideModal="isShown = false"
     >
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, praesentium.</p>
     </Modal>
@@ -18,7 +19,6 @@ import Modal from '@/components/Modal.vue'
 
 const isShown = ref(false)
 
-const hideModal = () => isShown.value = false
 const showModal = () => isShown.value = true
 </script>
 
