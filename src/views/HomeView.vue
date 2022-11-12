@@ -8,6 +8,8 @@
       <button class="btn" @click="increaseCounter(1)">+</button>
     </div>
     <p>This counter is {{ oddOrEven }}</p>
+
+    <input type="text" v-autofocus>
   </div>
 </template>
 
@@ -24,6 +26,12 @@ const counterData = reactive({
   count: 0,
   title: 'My counter',
 })
+
+const vAutofocus = {
+  mounted: (el) => {
+    el.focus()
+  }
+}
 
 watch(() => counterData.count, (newValue, oldValue) => {
   console.log('newValue', newValue)
