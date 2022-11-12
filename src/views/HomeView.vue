@@ -20,18 +20,13 @@
 
 <script setup>
 import {computed, reactive, watch} from 'vue'
+import {vAutofocus} from "../directives/vAutofocus";
 
 const appTitle = 'My Amazing Counter App';
 const counterData = reactive({
   count: 0,
   title: 'My counter',
 })
-
-const vAutofocus = {
-  mounted: (el) => {
-    el.focus()
-  }
-}
 
 watch(() => counterData.count, (newValue, oldValue) => {
   console.log('newValue', newValue)
