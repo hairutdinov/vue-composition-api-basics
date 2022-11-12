@@ -17,12 +17,16 @@
 </style>
 
 <script setup>
-import {computed, reactive} from 'vue'
+import {computed, reactive, watch} from 'vue'
 
 const appTitle = 'My Amazing Counter App';
 const counterData = reactive({
   count: 0,
   title: 'My counter',
+})
+
+watch(() => counterData.count, (newValue, oldValue) => {
+  console.log('newValue', newValue)
 })
 
 const oddOrEven = computed(() => counterData.count % 2 === 0 ? 'even' : 'odd')
