@@ -1,4 +1,7 @@
 <template>
+  <div class="user-data">
+    {{ userData.name }} @ {{ userData.username }}
+  </div>
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/posts">Posts</RouterLink>
@@ -7,6 +10,17 @@
 
   <RouterView />
 </template>
+
+<script setup>
+import {provide, reactive} from "vue";
+
+const userData = reactive({
+  name: 'Danny',
+  username: 'dannyconnell'
+})
+
+provide('userData', userData)
+</script>
 
 <style scoped>
 header {
