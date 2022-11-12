@@ -2,8 +2,7 @@
 
   <teleport to=".modals-container">
     <div class="modal">
-
-      <h2><slot name="title"></slot></h2>
+      <h2>{{ title }}</h2>
       <slot></slot>
       <button @click="false">Hide modal</button>
     </div>
@@ -11,10 +10,14 @@
 </template>
 
 <script setup>
-import { useSlots } from "vue"
+const props = defineProps({
+  title: {
+    type: String,
+    default: 'Title'
+  }
+});
 
-const slots = useSlots()
-console.log(slots.title())
+console.log(props.title)
 </script>
 
 <style scoped>
