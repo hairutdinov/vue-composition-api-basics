@@ -19,7 +19,7 @@
 </style>
 
 <script setup>
-import {computed, reactive, watch} from 'vue'
+import {computed, nextTick, reactive, watch} from 'vue'
 import {vAutofocus} from "../directives/vAutofocus";
 
 const appTitle = 'My Amazing Counter App';
@@ -35,5 +35,9 @@ watch(() => counterData.count, (newValue, oldValue) => {
 const oddOrEven = computed(() => counterData.count % 2 === 0 ? 'even' : 'odd')
 
 const decreaseCounter = () => counterData.count -= 1;
-const increaseCounter = amount => counterData.count += amount;
+const increaseCounter = async (amount) => {
+  counterData.count += amount
+  await nextTick();
+  console.log('tick')
+};
 </script>
