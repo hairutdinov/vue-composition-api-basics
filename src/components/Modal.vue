@@ -1,7 +1,7 @@
 <template>
 
   <teleport to=".modals-container">
-    <div class="modal">
+    <div class="modal" v-if="modelValue">
       <h2>{{ title }}</h2>
       <slot></slot>
       <button @click="hideModal">Hide modal</button>
@@ -16,15 +16,19 @@ const props = defineProps({
   title: {
     type: String,
     default: 'Title'
+  },
+  modelValue: {
+    type: Boolean,
+    default: false,
   }
 });
 
 console.log(props.title)
 
-const emit = defineEmits(['hideModal'])
+const emit = defineEmits(['update:modelValue'])
 
 const hideModal = () => {
-  emit('hideModal')
+  emit('update:modelValue', false)
 }
 </script>
 
