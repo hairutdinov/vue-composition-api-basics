@@ -1,8 +1,9 @@
 <template>
   <div class="home">
+    <h4>{{ counterData.title }}</h4>
     <div>
       <button class="btn" @click="decreaseCounter">-</button>
-      <span class="counter">{{ counter }}</span>
+      <span class="counter">{{ counterData.count }}</span>
       <button class="btn" @click="increaseCounter">+</button>
     </div>
   </div>
@@ -14,10 +15,13 @@
 </style>
 
 <script setup>
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
-const counter = ref(0);
+const counterData = reactive({
+  count: 0,
+  title: 'My counter',
+})
 
-const decreaseCounter = () => counter.value -= 1;
-const increaseCounter = () => counter.value += 1;
+const decreaseCounter = () => counterData.count -= 1;
+const increaseCounter = () => counterData.count += 1;
 </script>
