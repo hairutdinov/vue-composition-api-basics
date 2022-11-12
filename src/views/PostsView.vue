@@ -10,4 +10,13 @@
       </li>
     </ul>
   </div>
+
+  <button @click="increase">
+    {{counterData.count}}
+  </button>
 </template>
+
+<script setup>
+import { useCounter} from "../use/useCounter";
+const {counterData, increase} = useCounter()
+</script>
