@@ -13,20 +13,11 @@
 
 </style>
 
-<script>
+<script setup>
 import { ref } from 'vue'
-export default {
-  setup() {
-    const counter = ref(0);
 
-    const decreaseCounter = () => counter.value -= 1;
-    const increaseCounter = () => counter.value += 1;
+const counter = ref(0);
 
-    return {
-      counter,
-      decreaseCounter,
-      increaseCounter,
-    }
-  },
-}
+const decreaseCounter = () => counter.value -= 1;
+const increaseCounter = () => counter.value += 1;
 </script>
