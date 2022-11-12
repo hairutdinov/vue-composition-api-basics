@@ -3,9 +3,9 @@
     <h2>{{ appTitle }}</h2>
     <h4>{{ counterData.title }}</h4>
     <div>
-      <button class="btn" @click="decreaseCounter">-</button>
+      <button class="btn" @click="decrease">-</button>
       <span class="counter">{{ counterData.count }}</span>
-      <button class="btn" @click="increaseCounter(1)">+</button>
+      <button class="btn" @click="increase">+</button>
     </div>
     <p>This counter is {{ oddOrEven }}</p>
 
@@ -19,25 +19,11 @@
 </style>
 
 <script setup>
-import {computed, nextTick, reactive, watch} from 'vue'
 import {vAutofocus} from "../directives/vAutofocus";
+import { useCounter } from '../use/useCounter'
+
+const { counterData, increase, decrease, oddOrEven } = useCounter();
 
 const appTitle = 'My Amazing Counter App';
-const counterData = reactive({
-  count: 0,
-  title: 'My counter',
-})
 
-watch(() => counterData.count, (newValue, oldValue) => {
-  console.log('newValue', newValue)
-})
-
-const oddOrEven = computed(() => counterData.count % 2 === 0 ? 'even' : 'odd')
-
-const decreaseCounter = () => counterData.count -= 1;
-const increaseCounter = async (amount) => {
-  counterData.count += amount
-  await nextTick();
-  console.log('tick')
-};
 </script>
