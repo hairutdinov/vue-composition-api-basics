@@ -14,19 +14,19 @@
 </style>
 
 <script>
+import { ref } from 'vue'
 export default {
-  data() {
+  setup() {
+    const counter = ref(0);
+
+    const decreaseCounter = () => counter.value -= 1;
+    const increaseCounter = () => counter.value += 1;
+
     return {
-      counter: 0
+      counter,
+      decreaseCounter,
+      increaseCounter,
     }
   },
-  methods: {
-    decreaseCounter() {
-      this.counter -= 1;
-    },
-    increaseCounter() {
-      this.counter += 1;
-    },
-  }
 }
 </script>
