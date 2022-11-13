@@ -1,13 +1,13 @@
 <template>
   <div class="home">
     <h2>{{ appTitle }}</h2>
-    <h4>{{ counterData.title }}</h4>
+    <h4>{{ counter.counterTitle }}</h4>
     <div>
-      <button class="btn" @click="decrease">-</button>
-      <span class="counter">{{ counterData.count }}</span>
-      <button class="btn" @click="increase">+</button>
+      <button class="btn" @click="counter.decrement">-</button>
+      <span class="counter">{{ counter.count }}</span>
+      <button class="btn" @click="counter.increment">+</button>
     </div>
-    <p>This counter is {{ oddOrEven }}</p>
+    <p>This counter is {{ counter.oddOrEven }}</p>
 
     <input type="text" v-autofocus>
   </div>
@@ -19,11 +19,10 @@
 </style>
 
 <script setup>
-import {vAutofocus} from "../directives/vAutofocus";
-import { useCounter } from '../use/useCounter'
+import {vAutofocus} from "../directives/vAutofocus"
+import { useCounterStore } from "@/stores/counter.js"
 
-const { counterData, increase, decrease, oddOrEven } = useCounter();
-
-const appTitle = 'My Amazing Counter App';
+const appTitle = 'My Amazing Counter App'
+const counter = useCounterStore()
 
 </script>
